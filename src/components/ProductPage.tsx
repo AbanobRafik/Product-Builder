@@ -10,13 +10,8 @@ const ProductPage = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   /* Handlers */
-  function open() {
-    setIsOpen(true);
-  }
-
-  function close() {
-    setIsOpen(false);
-  }
+  const open = () => setIsOpen(true);
+  const close = () => setIsOpen(false);
 
   const products = productList.map((product) => (
     <ProductCard key={product.id} product={product} />

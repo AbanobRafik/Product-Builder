@@ -3,19 +3,17 @@ export interface Product {
   title: string;
   description: string;
   imageUrl: string;
-  price: number;
+  price: string;
   colors: string[];
   category: {
     name: string;
   };
 }
 
-
 export interface FormInput {
   id: string;
-  name: string;
+  name: "title" | "price" | "description" | "imageUrl";
   type: string;
   placeholder: string;
   label: string;
 }
-
