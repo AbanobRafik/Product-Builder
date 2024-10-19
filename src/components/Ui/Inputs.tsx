@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from "react";
 
-interface InputsProps extends InputHTMLAttributes<HTMLInputElement> {}
+interface InputsProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
 
 const Inputs = ({ ...rest }: InputsProps) => {
   return (
@@ -8,7 +10,7 @@ const Inputs = ({ ...rest }: InputsProps) => {
       className="
         border-2 border-gray-500 
         px-3 py-2 
-        w-full 
+        w-full
         rounded-md
         focus:outline-none focus:border-indigo-500 
         focus:ring-1 focus:ring-indigo-500 

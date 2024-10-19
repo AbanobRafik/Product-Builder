@@ -1,5 +1,6 @@
 import { Product } from "../interfaces";
 import { testSlicer } from "../utils/functions";
+import CircleColors from "./CircleColors";
 import ProductImg from "./ProductImg";
 import Button from "./Ui/Button";
 
@@ -8,7 +9,11 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { title, description, imageUrl, price, category } = product;
+  const { title, description, imageUrl, price, colors, category } = product;
+
+  const productColors = colors.map((color) => (
+    <CircleColors key={color} color={color} />
+  ));
 
   return (
     <div className="flex flex-col border max-w-sm md:max-w-lg mx-auto md:mx-0 border-gray-200 rounded-lg overflow-hidden shadow-sm">
@@ -31,10 +36,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center space-x-2 mt-2">
-        <span className="w-5 h-5 bg-indigo-500 rounded-full cursor-pointer"></span>
-        <span className="w-5 h-5 bg-red-500 rounded-full cursor-pointer"></span>
-        <span className="w-5 h-5 bg-emerald-500 rounded-full cursor-pointer"></span>
+      <div className="flex items-center justify-center space-x-1 mt-2">
+        {productColors}
       </div>
 
       <div className="flex items-center justify-between px-5 mt-2">
