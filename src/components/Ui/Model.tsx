@@ -28,13 +28,13 @@ const Model = ({ isOpen, close, title, children }: Model) => {
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-md bg-white shadow-black shadow-md p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-md rounded-md bg-white dark:bg-slate-700 shadow-black shadow-md p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               {/* Title */}
               {title && (
                 <DialogTitle
                   as="h3"
-                  className="text-base font-medium text-black text-center"
+                  className="text-base font-medium text-black dark:text-white text-center"
                 >
                   {title}
                 </DialogTitle>

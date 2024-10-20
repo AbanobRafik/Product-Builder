@@ -4,7 +4,7 @@ interface ErrorMessage {
 
 const ErrorMessage = ({ msg }: ErrorMessage) => {
   return msg ? (
-    <span className="text-red-500 font-semibold text-sm block">{msg}</span>
+    <span className="text-red-500 font-semibold text-sm block dark:text-red-500 dark:font-extrabold">{msg}</span>
   ) : null;
 };
 

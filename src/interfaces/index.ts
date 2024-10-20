@@ -17,3 +17,8 @@ export interface FormInput {
   placeholder: string;
   label: string;
 }
+
+export interface Categories {
+  id: string;
+  name: string;
+}
