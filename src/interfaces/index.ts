@@ -1,3 +1,5 @@
+import { TProductname } from "../types";
+
 export interface Product {
   id?: string; // Change this to string to accommodate UUID
   title: string;
@@ -12,7 +14,7 @@ export interface Product {
 
 export interface FormInput {
   id: string;
-  name: "title" | "price" | "description" | "imageUrl";
+  name: TProductname;
   type: string;
   placeholder: string;
   label: string;

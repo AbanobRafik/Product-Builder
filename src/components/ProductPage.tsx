@@ -12,6 +12,7 @@ import { v4 as uuid } from "uuid";
 import SelectCategory from "./Ui/SelectCategory";
 import { Switch } from "@headlessui/react";
 import { Icon } from "@iconify/react";
+import { TProductname } from "../types";
 
 const ProductPage = () => {
   const defaultProductObj: Product = {
@@ -115,7 +116,7 @@ const ProductPage = () => {
 
   const submitEditHandler = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const { title, description, imageUrl, price } = product;
+    const { title, description, imageUrl, price } = productEdit;
 
     // Validate the product data
     const Errors = productValidation({
@@ -134,13 +135,8 @@ const ProductPage = () => {
       return;
     }
 
-    setProductsAdd((prev) => [
-      { ...product, id: uuid(), colors: tempColors, category },
-      ...prev,
-    ]);
-
     // Reset the form and close the modal upon successful submission
-    setProduct(defaultProductObj);
+    setProductEdit(defaultProductObj);
     setTempColors([]);
     close();
   };
@@ -176,26 +172,6 @@ const ProductPage = () => {
       <ErrorMessage msg={errors[input.name]} />
     </div>
   ));
-  const formInputListEdit = FormInputList.map((input) => (
-    <div className="flex flex-col mb-3" key={input.id}>
-      <label
-        htmlFor={input.id}
-        className="text-gray-700 dark:text-white text-sm mb-1 font-medium"
-      >
-        {input.label}
-      </label>
-      <Inputs
-        id={input.id}
-        name={input.name}
-        placeholder={input.placeholder}
-        type={input.type}
-        onChange={onChangeEditHandler}
-        value={productEdit[input.name]}
-      />
-      {/* Show error message if there's an error */}
-      <ErrorMessage msg={errors[input.name]} />
-    </div>
-  ));
 
   const productColors = colors.map((color) => (
     <CircleColors
@@ -215,6 +191,34 @@ const ProductPage = () => {
   function toggleTheme() {
     document.documentElement.classList.toggle("dark");
   }
+
+  const renderProductEditWithErrMsg = (
+    id: string,
+    label: string,
+    name: TProductname,
+    placeholder: string
+  ) => {
+    return (
+      <div className="flex flex-col mb-3">
+        <label
+          htmlFor={id}
+          className="text-gray-700 dark:text-white text-sm mb-1 font-medium"
+        >
+          {label}
+        </label>
+        <Inputs
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          type="text"
+          onChange={onChangeEditHandler}
+          value={productEdit[name]}
+        />
+        {/* Show error message if there's an error */}
+        <ErrorMessage msg={errors[name]} />
+      </div>
+    );
+  };
 
   return (
     <div className="container mx-auto p-4 dark:bg-gray-900 dark:text-gray-100">
@@ -293,8 +297,32 @@ const ProductPage = () => {
       {/* model for edit product */}
       <Model isOpen={isOpenForEdit} close={closeforedit} title="EDTIT PRODUCT">
         <form className="space-y-3" onSubmit={submitEditHandler}>
-          {formInputListEdit}
-          <SelectCategory selected={category} setSelected={setCategory} />
+          {renderProductEditWithErrMsg(
+            "title",
+            "Product Title",
+            "title",
+            "enter title"
+          )}
+          {renderProductEditWithErrMsg(
+            "description",
+            "Product description",
+            "description",
+            "enter description"
+          )}
+          {renderProductEditWithErrMsg(
+            "imageUrl",
+            "imageUrl",
+            "imageUrl",
+            "enter Url"
+          )}
+          {renderProductEditWithErrMsg(
+            "price",
+            "Product Price",
+            "price",
+            "enter price"
+          )}
+
+          {/* <SelectCategory selected={category} setSelected={setCategory} />
           <div className="flex items-center justify-center space-x-1 mt-2">
             {productColors}
           </div>
@@ -308,7 +336,7 @@ const ProductPage = () => {
                 {color}
               </span>
             ))}
-          </div>
+          </div> */}
           <div className="flex items-center justify-center space-x-3 mt-4">
             <Button className="bg-emerald-600 hover:bg-emerald-800 px-4 py-2">
               EDIT
