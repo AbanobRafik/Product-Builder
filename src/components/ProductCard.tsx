@@ -8,12 +8,18 @@ interface ProductCardProps {
   product: Product;
   setProductEdit: (product: Product) => void;
   openforedit: () => void;
+  setProductEditIdx: (value: number) => void;
+  idx: number;
+  OpenConfirmModel: () => void;
 }
 
 const ProductCard = ({
   product,
   setProductEdit,
   openforedit,
+  setProductEditIdx,
+  idx,
+  OpenConfirmModel,
 }: ProductCardProps) => {
   const { title, description, imageUrl, price, colors, category } = product;
 
@@ -21,10 +27,25 @@ const ProductCard = ({
     <CircleColors key={color} color={color} />
   ));
 
-  // handelrs
+  // Format price with commas using Intl.NumberFormat for clearer structure
+  const formattedPrice = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: parseFloat(price) % 1 === 0 ? 0 : 2,
+    maximumFractionDigits: 2,
+  }).format(parseFloat(price));
+
+  // Handlers
   const onEdit = () => {
     setProductEdit(product);
     openforedit();
+    setProductEditIdx(idx);
+  };
+
+  // Delete modal
+  const OnRemove = () => {
+    OpenConfirmModel();
+    setProductEdit(product);
   };
 
   return (
@@ -54,7 +75,7 @@ const ProductCard = ({
 
       <div className="flex items-center justify-between px-5 mt-2">
         <span className="font-bold text-lg text-emerald-500 dark:text-emerald-400">
-          ${price}
+          {formattedPrice}
         </span>
         <span className="font-medium text-lg dark:text-gray-300">
           {category.name}
@@ -73,6 +94,7 @@ const ProductCard = ({
           <Button
             className="bg-red-600 flex-1 hover:bg-red-800 dark:bg-red-500 dark:hover:bg-red-700"
             width="w-full"
+            onClick={OnRemove}
           >
             DELETE
           </Button>

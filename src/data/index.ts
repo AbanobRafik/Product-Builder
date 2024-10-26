@@ -9,7 +9,7 @@ export const productList: Product[] = [
       "The iPhone 16 Pro Max boasts a stunning 6.9-inch display, a powerful A18 Bionic chip, and a 48MP triple-lens camera for pro-level photography. With a titanium frame, it offers durability and elegance, while the enhanced battery life and cutting-edge features make it a top-tier flagship device.",
     imageUrl:
       "https://mobiiprice.com/wp-content/uploads/2024/09/Apple-iPhone-16-Pro-Max.jpg",
-    price: "1500",
+    price: "1100",
     colors: ["#1F8A70", "#C0C0C0", "#000"],
     category: {
       name: "Smartphones",
@@ -49,10 +49,62 @@ export const productList: Product[] = [
       "The Asus TUF F15 Gaming Laptop is designed for serious gamers, featuring a 15.6-inch 144Hz display, Intel Core i7 processor, and RTX 3060 GPU for smooth gameplay. Its military-grade durability, efficient cooling system, and long battery life ensure excellent performance for gaming and multitasking.",
     imageUrl:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS66rRdWGlLtOe87Med2Ze1nJpV-vtD0r_Zyg&s",
-    price: "1000",
+    price: "1500",
     colors: ["#010101", "#C0C0C0"],
     category: {
       name: "Laptops",
+    },
+  },
+  {
+    id: uuid(),
+    title: "Huawei fit 3",
+    description:
+      "The Huawei Fit 3 combines style with function in a lightweight, versatile smartwatch. Its AMOLED display, 24/7 health tracking, and 10-day battery life make it ideal for active users. With built-in GPS, heart rate monitoring, and customizable faces, it adapts to every need and look.",
+    imageUrl:
+      "https://btech.com/media/catalog/product/7/8/78b9507461657e048560392b0298e27ec1c53531a024d4baed3e2e6adbe76f62.jpeg?width=800&store=ar&image-type=image",
+    price: "300",
+    colors: ["#010101", "#C0C0C0", "#1F8A70"],
+    category: {
+      name: "Smartwatches",
+    },
+  },
+  {
+    id: uuid(),
+    title: "PC Desktop Gaming",
+    description:
+      "powerful desktop for gaming, blending high performance with sleek design. Featuring a vivid 4K+ touchscreen display, AMD Ryzen processor, and advanced cooling, it delivers smooth gameplay and stunning visuals. Its minimalist build suits any setup, perfect for immersive gaming experiences.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSraxKarm4tM_TOk29_ki13dbLwPJSamzNMEQ&s",
+    price: "2500",
+    colors: ["#010101"],
+    category: {
+      name: "PC Desktop",
+    },
+  },
+  {
+    id: uuid(),
+    title: "TV NEO QLED 8k",
+    description:
+      "The Samsung Neo QLED 8K TV delivers breathtaking clarity and vivid colors with Quantum Matrix Technology Pro, powered by the latest Neo Quantum 8K processor. With its ultra-fine contrast, immersive 3D audio, and slim Infinity Screen design, it transforms any space into a cinematic experience, ideal for premium viewing.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAiKAvCf9g-q4IuHZG0jAlkvj6wc95Nke8-g&s",
+    price: "2000",
+    colors: ["#010101", "#C0C0C0", "#4682B4"],
+    category: {
+      name: "TV",
+    },
+  },
+  {
+    id: uuid(),
+    title: "Honor PAD 9X",
+    description:
+      "The Honor Pad X9 is a versatile tablet featuring an expansive 11.5-inch 2K display with immersive sound through six speakers, ideal for entertainment and productivity. Powered by a Snapdragon processor and boasting a lightweight, sleek design, it offers smooth multitasking, perfect for work, play, and everything in between.",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvdDov1ceUppbYiERfahT1Q39pBEBUV6CAbg&s",
+    price: "1000",
+    colors: ["#010101", "#4682B4"],
+    category: {
+      name: "Tablets",
     },
   },
 ];
@@ -115,9 +167,8 @@ export const colors: string[] = [
 ];
 
 export const categories: Categories[] = [
-  { id: uuid(), name: "Phones" },
   { id: uuid(), name: "Laptops" },
-  { id: uuid(), name: "PC" },
+  { id: uuid(), name: "PC Desktop" },
   { id: uuid(), name: "Clothes" },
   { id: uuid(), name: "Smartphones" },
   { id: uuid(), name: "Cars" },

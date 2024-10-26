@@ -9,7 +9,7 @@ import { categories } from "../../data";
 import { Categories } from "../../interfaces";
 
 interface CategoryProps {
-  selected: Categories;
+  selected: { name: string };
   setSelected: (categ: Categories) => void;
 }
 

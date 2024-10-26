@@ -1,4 +1,9 @@
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
 import { ReactNode } from "react";
 
 interface Model {
@@ -6,9 +11,10 @@ interface Model {
   close: () => void;
   children?: ReactNode;
   title?: string;
+  description?: string;
 }
 
-const Model = ({ isOpen, close, title, children }: Model) => {
+const Model = ({ isOpen, close, title, children, description }: Model) => {
   return (
     <>
       <Dialog
@@ -22,6 +28,7 @@ const Model = ({ isOpen, close, title, children }: Model) => {
           className="fixed inset-0 bg-black bg-opacity-50"
           aria-hidden="true"
         />
+        <DialogBackdrop className="fixed inset-0 bg-black/50 backdrop:blur-md" />
 
         {/* The modal content */}
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -39,6 +46,13 @@ const Model = ({ isOpen, close, title, children }: Model) => {
                   {title}
                 </DialogTitle>
               )}
+              <div
+                className="
+              text-center text-sm text-gray-600 dark:text-gray-400 mt-2
+              "
+              >
+                {description}
+              </div>
 
               {/* Modal content */}
               <div className="mt-4">{children}</div>
