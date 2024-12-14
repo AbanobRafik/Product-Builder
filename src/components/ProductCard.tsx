@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Product } from "../interfaces";
 import { testSlicer } from "../utils/functions";
 import CircleColors from "./CircleColors";
@@ -104,4 +105,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);

@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { categories, colors, FormInputList, productList } from "../data";
 import ProductCard from "./ProductCard";
 import Button from "./Ui/Button";
@@ -54,7 +54,7 @@ const ProductPage = () => {
     setIsOpen(true);
   };
   const close = () => setIsOpen(false);
-  const openforedit = () => setIsOpenForEdit(true);
+  const openforedit = useCallback(() => setIsOpenForEdit(true), []);
   const closeforedit = () => setIsOpenForEdit(false);
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -169,7 +169,7 @@ const ProductPage = () => {
     closeforedit();
   };
 
-  const openConfirmDelete = () => setIsOpenConfirmModal(true);
+  const openConfirmDelete = useCallback(() => setIsOpenConfirmModal(true), []);
   const closeConfirmDelete = () => setIsOpenConfirmModal(false);
 
   const RemoveProductHandler = () => {
@@ -226,9 +226,9 @@ const ProductPage = () => {
     />
   ));
 
-  function toggleTheme() {
+  const toggleTheme = useCallback(() => {
     document.documentElement.classList.toggle("dark");
-  }
+  }, []);
 
   // make search
   const handelSearch = (event: ChangeEvent<HTMLInputElement>) => {
